@@ -34,11 +34,20 @@ const RegistrationSuccessPage = () => {
 
           <div className="mt-6 rounded-xl border border-gray-200 bg-[#FBFBFB] p-5 text-left">
             <p className="text-xs font-medium uppercase tracking-wider text-[#8A8178]">
-              Join the Telegram Group
+              To Join the Telegram Group
             </p>
-            <p className="mt-2 text-sm text-[#5B534C]">
-              Check your email for the Brand Conversations with BNM
-              invitation and Telegram group link.
+
+            <p className="mt-2 text-sm leading-relaxed text-[#5B534C]">
+              Check your email for the Brand Conversations with BNM invitation
+              and Telegram group link.
+            </p>
+
+            <p className="mt-3 border-t border-gray-200 pt-3 text-xs leading-relaxed text-[#8A8178]">
+              Didn’t see the email? Please check your{" "}
+              <span className="font-medium text-[#7B2418]">
+                spam or junk folder
+              </span>
+              .
             </p>
           </div>
         </motion.div>
