@@ -1,21 +1,28 @@
 import { motion } from "framer-motion";
 import { CheckCircle, Send } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 const TELEGRAM_LINK = "https://t.me/+rjyWoEWqv2gzZmQ8";
 
 const RegistrationSuccessPage = () => {
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      window.location.href = TELEGRAM_LINK;
+    }, 2000); // Redirect after 2 seconds
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <main className="flex min-h-screen items-center justify-center bg-[#EFEFEF] font-sans">
       <div className="w-full max-w-md space-y-4 px-4 py-12">
-        {/* Success Card */}
         <motion.div
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
           className="overflow-hidden rounded-2xl border border-gray-200 bg-white p-8 text-center shadow-lg"
         >
-          {/* Checkmark */}
           <motion.div
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
@@ -34,7 +41,6 @@ const RegistrationSuccessPage = () => {
             spot is confirmed.
           </p>
 
-          {/* Telegram CTA */}
           <motion.a
             href={TELEGRAM_LINK}
             target="_blank"
@@ -50,19 +56,13 @@ const RegistrationSuccessPage = () => {
             Join the Telegram Group
           </motion.a>
 
-          <div className="mt-4 rounded-xl border border-gray-100 bg-[#FBFBFB] p-4 text-left">
+          <div className="mt-4 rounded-xl border border-gray-100 bg-[#FBFBFB] p-4">
             <p className="text-xs leading-relaxed text-[#8A8178]">
-              A confirmation email has also been sent to you. Didn't see it?
-              Check your{" "}
-              <span className="font-medium text-[#7B2418]">
-                spam or junk folder
-              </span>
-              .
+              You will be redirected to the Telegram group automatically...
             </p>
           </div>
         </motion.div>
 
-        {/* Navigation */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
