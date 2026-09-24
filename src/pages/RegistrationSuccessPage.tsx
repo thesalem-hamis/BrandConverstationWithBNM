@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
-import { CheckCircle } from "lucide-react";
+import { CheckCircle, Send } from "lucide-react";
 import { Link } from "react-router-dom";
+
+const TELEGRAM_LINK = "https://t.me/+rjyWoEWqv2gzZmQ8";
 
 const RegistrationSuccessPage = () => {
   return (
@@ -32,18 +34,26 @@ const RegistrationSuccessPage = () => {
             spot is confirmed.
           </p>
 
-          <div className="mt-6 rounded-xl border border-gray-200 bg-[#FBFBFB] p-5 text-left">
-            <p className="text-xs font-medium uppercase tracking-wider text-[#8A8178]">
-              To Join the Telegram Group
-            </p>
+          {/* Telegram CTA */}
+          <motion.a
+            href={TELEGRAM_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.4 }}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="mt-6 flex items-center justify-center gap-2.5 rounded-xl bg-[#229ED9] px-6 py-4 text-sm font-semibold text-white shadow-md transition-colors hover:bg-[#1a8bbf]"
+          >
+            <Send className="h-4 w-4" />
+            Join the Telegram Group
+          </motion.a>
 
-            <p className="mt-2 text-sm leading-relaxed text-[#5B534C]">
-              Check your email for the Brand Conversations with BNM invitation
-              and Telegram group link.
-            </p>
-
-            <p className="mt-3 border-t border-gray-200 pt-3 text-xs leading-relaxed text-[#8A8178]">
-              Didn’t see the email? Please check your{" "}
+          <div className="mt-4 rounded-xl border border-gray-100 bg-[#FBFBFB] p-4 text-left">
+            <p className="text-xs leading-relaxed text-[#8A8178]">
+              A confirmation email has also been sent to you. Didn't see it?
+              Check your{" "}
               <span className="font-medium text-[#7B2418]">
                 spam or junk folder
               </span>
@@ -56,7 +66,7 @@ const RegistrationSuccessPage = () => {
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.4 }}
+          transition={{ delay: 0.7, duration: 0.4 }}
           className="flex justify-center"
         >
           <Link

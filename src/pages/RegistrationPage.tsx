@@ -24,6 +24,7 @@ interface FormErrors {
   country?: string;
   businessProfession?: string;
   hasChallenge?: string;
+  challengeDescription?: string;
 }
 
 const RegistrationPage = () => {
@@ -102,6 +103,10 @@ const RegistrationPage = () => {
 
     if (!formData.hasChallenge) {
       newErrors.hasChallenge = "Please select an option.";
+    }
+
+    if (formData.hasChallenge === "yes" && !formData.challengeDescription.trim()) {
+      newErrors.challengeDescription = "Please describe your challenge.";
     }
 
     setErrors(newErrors);
@@ -463,24 +468,37 @@ const RegistrationPage = () => {
           </div>
 
           {/* Challenge Description */}
-          <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
-            <label
-              htmlFor="challengeDescription"
-              className="mb-3 block text-sm font-medium text-[#1C1815]"
-            >
-              If yes, kindly describe the challenge
-            </label>
+          {formData.hasChallenge === "yes" && (
+            <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+              <label
+                htmlFor="challengeDescription"
+                className="mb-3 block text-sm font-medium text-[#1C1815]"
+              >
+                If yes, kindly describe the challenge{" "}
+                <span className="text-red-600">*</span>
+              </label>
 
-            <textarea
-              id="challengeDescription"
-              name="challengeDescription"
-              value={formData.challengeDescription}
-              onChange={handleChange}
-              rows={3}
-              placeholder="Your answer"
-              className="w-full resize-y border-b border-gray-300 pb-1 text-sm outline-none transition focus:border-b-2 focus:border-[#7B2418]"
-            />
-          </div>
+              <textarea
+                id="challengeDescription"
+                name="challengeDescription"
+                value={formData.challengeDescription}
+                onChange={handleChange}
+                rows={3}
+                placeholder="Your answer"
+                className={`w-full resize-y border-b pb-1 text-sm outline-none transition focus:border-b-2 focus:border-[#7B2418] ${
+                  errors.challengeDescription
+                    ? "border-red-500"
+                    : "border-gray-300"
+                }`}
+              />
+
+              {errors.challengeDescription && (
+                <p className="mt-2 text-xs text-red-600">
+                  {errors.challengeDescription}
+                </p>
+              )}
+            </div>
+          )}
 
           {/* Submit */}
           <div className="border-t border-black/10 pt-7">
